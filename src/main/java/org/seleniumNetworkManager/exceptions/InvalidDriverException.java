@@ -7,9 +7,8 @@ public class InvalidDriverException extends Exception{
         super();
     }
     InvalidDriverException(String message, String browser){
-        System.out.println("The current");
         super(message);
-
+        System.out.println("The current");
     }
 
 
