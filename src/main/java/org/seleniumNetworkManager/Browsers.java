@@ -2,9 +2,9 @@ package org.seleniumNetworkManager;
 
 public enum Browsers {
     CHROME("chrome"),
-    FIREFOX("firefox");
-//    EDGE("edge"),
-//    SAFARI("safari");
+    FIREFOX("firefox"),
+    EDGE("edge"),
+    SAFARI("safari");
 
     private String name;
     Browsers(String name){
@@ -16,7 +16,7 @@ public enum Browsers {
     }
     public boolean hasValue(String browserName){
         for(Browsers b : Browsers.values()){
-            if(b.getName().equals(browserName))
+            if(b.getName().equalsIgnoreCase(browserName))
                 return true;
         }
         return false;

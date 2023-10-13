@@ -6,8 +6,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v115.network.model.RequestId;
 import org.openqa.selenium.devtools.v115.network.Network;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.seleniumNetworkManager.exceptions.InvalidDriverException;
 
 import java.util.*;
@@ -27,19 +29,24 @@ public class NetworkManager {
         String browserName;
         ChromeDriver cd;
         FirefoxDriver fd;
+        EdgeDriver ed;
+        SafariDriver sd;
         browserName = ((RemoteWebDriver)driver).getCapabilities().getBrowserName().toLowerCase();
 
-        if(browserName.equals("chrome")){
+        if(browserName.equalsIgnoreCase("chrome")){
             cd = (ChromeDriver)driver;
             devTools = cd.getDevTools();
-        }else if (browserName.equals("firefox")){
+        }else if (browserName.equalsIgnoreCase("firefox")){
             fd = (FirefoxDriver)driver;
             biDiTools = fd.getBiDi();
         }
-        else if(browserName.toLowerCase().equals("edge")){
-
+        else if(browserName.equalsIgnoreCase("edge")){
+            ed = (EdgeDriver) driver;
+            devTools = ed.getDevTools();
         }
-        else if(browserName.toLowerCase().equals("safari")){
+        //devtools?
+        else if(browserName.equalsIgnoreCase("safari")){
+            sd = (SafariDriver) driver;
 
         }else{
             throw new InvalidDriverException();
